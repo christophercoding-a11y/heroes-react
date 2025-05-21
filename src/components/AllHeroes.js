@@ -5,6 +5,12 @@ const AllHeroes =({ heroes })=> {
         return (
             <HeroCard 
                 key={hero.hero_id}
+                id={hero.hero_id}
+                alias={hero.alias}
+                heroName={hero.hero_name || `${hero.first_name} ${hero.last_name}`}
+                first_name={hero.first_name}
+                last_name={hero.last_name}
+                img={hero.imgUrl}
             />
         )
     })
