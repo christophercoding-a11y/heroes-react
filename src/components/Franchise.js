@@ -7,7 +7,7 @@ const Franchise =()=> {
 
     useEffect(()=> {
 
-        const url = 'http://localhost:3002/api/franchise'
+        const url = 'http://localhost:3005/api/franchise'
 
         axios.get(url).then(res => setFranchise(res.data))
     }, [])

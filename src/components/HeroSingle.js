@@ -43,7 +43,7 @@ const HeroSingle =()=> {
                     <div className="col">
                         <h3 className="hero-stats text-capitalize">info</h3>
                         <ul className="hero-stat-list list-group list-group-flush">
-                            <li className="list-group-item">Full Name:{`${hero.first_name} ${hero.last_name}`}</li>
+                            <li className="list-group-item">Full Name: {`${hero.first_name} ${hero.last_name}`}</li>
                             <li className="list-group-item">Place of Origin: {`${hero.place_of_origin}`}</li>
                             <li className="list-group-item">Species: {`${hero.species}`}</li>
                             <li className="list-group-item">Franchise: {`${hero.franchise}`}</li>
