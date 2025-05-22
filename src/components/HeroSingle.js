@@ -47,7 +47,7 @@ const HeroSingle =()=> {
                             <li className="list-group-item">Place of Origin: {`${hero.place_of_origin}`}</li>
                             <li className="list-group-item">Species: {`${hero.species}`}</li>
                             <li className="list-group-item">Franchise: {`${hero.franchise}`}</li>
-                            <li className="list-group-item">First Appearance: {`${hero._app}`}</li>
+                            <li className="list-group-item">First Appearance: {`${hero.first_app}`}</li>
                             { powers.length && <li className="list-group-item">
                                 Powers:
                                 <ul className="powers-list">

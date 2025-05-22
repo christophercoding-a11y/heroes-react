@@ -7,3 +7,5 @@ Connect initial components
     Error
     AddheroForm
     Footer
+
+   See if I can make a dynamic component for Franchise, Team, Species, and Powers
