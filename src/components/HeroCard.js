@@ -10,7 +10,7 @@ const HeroCard =(props)=> {
                     {props.alias && <p className="card-text hero-alias fst-italic">{props.alias}</p>}
                 </div>
                 <footer className="card-footer">
-                    <Link to={`/heroes/${props.id}`}>view more</Link>
+                    <Link to={`/hero/${props.id}`}>view more</Link>
                 </footer>
             </div>
         </div>
