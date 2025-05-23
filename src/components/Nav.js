@@ -3,7 +3,7 @@ import { Link } from "react-router"
 const Nav =()=> {
 
     return (
-        <nav className=" nav top-nav justify-content-center justify-content-md-evenly">
+        <nav className=" nav top-nav justify-content-center justify-content-md-around">
             <Link to="/">Home</Link>
             <Link to="/hero">Heroes</Link>
             <Link to="/franchise">Franchises</Link>
