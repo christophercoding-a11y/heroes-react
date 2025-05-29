@@ -1,4 +1,55 @@
+import { useState, useEffect } from "react"
+import axios from "axios"
+
 const HeroForm =(props)=> {
+
+    const [ franchises, setFranchises ] = useState([])
+    const [ species, setSpecies ] = useState([])
+
+    useEffect(()=> {
+        const franUrl = 'http://localhost:3005/api/franchise'
+        const specUrl = 'http://localhost:3005/api/species'
+
+        axios.get(franUrl).then(res => setFranchises(res.data))
+        axios.get(specUrl).then(res => setSpecies(res.data))
+    }, [])
+
+    const franchiseDivs = franchises.map(franchise => {
+        return (
+            <div className="form-check form-check-inline" key={franchise.franchise_id}>
+                <input
+                    className="form-check-input"
+                    type="radio"
+                    name="species"
+                    value={franchise.franchise_id}
+                    id={franchise.franchise}
+                    onChange={props.handleChange}
+                />
+                <label className="form-check-label" htmlFor={franchise.franchise}>
+                    {franchise.franchise}
+                </label>
+            </div>
+        )
+    })
+
+    
+    const speciesDivs = species.map(species => {
+        return (
+            <div className="form-check form-check-inline" key={species.species_id}>
+                <input
+                    className="form-check-input"
+                    type="radio"
+                    name="species"
+                    value={species.species_id}
+                    id={species.species}
+                    onChange={props.handleChange}
+                />
+                <label className="form-check-label" htmlFor={species.species}>
+                    {species.species}
+                </label>
+            </div>
+        )
+    })
 
     return(
         <main className="main" id="heroFormMain">
@@ -78,6 +129,7 @@ const HeroForm =(props)=> {
                         </div>
                         <div className="col">
                             <div className="alignment-box">
+                                <p className="form-text">Alignment</p>
                                 <div className="form-check">
                                     <input
                                     className="form-check-input"
@@ -87,7 +139,7 @@ const HeroForm =(props)=> {
                                     id="heroAligment"
                                     onChange={props.handleChange}
                                 />
-                                <label className="form-check-label">Hero</label>
+                                <label className="form-check-label" htmlFor="heroAlignment">Hero</label>
                                 </div>
                                 <div className="form-check">
                                     <input
@@ -98,7 +150,7 @@ const HeroForm =(props)=> {
                                     id="villainAligment"
                                     onChange={props.handleChange}
                                 />
-                                <label className="form-check-label">Villain</label>
+                                <label className="form-check-label" htmlFor="villainAlignment">Villain</label>
                                 </div>
                                 <div className="form-check">
                                     <input
@@ -109,8 +161,37 @@ const HeroForm =(props)=> {
                                     id="antiheroAligment"
                                     onChange={props.handleChange}
                                 />
-                                <label className="form-check-label">Antihero</label>
+                                <label className="form-check-label" htmlFor="antiheroAlignment">Antihero</label>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col">
+                            <div className="franchise-box">
+                                <p className="form-text">Franchise</p>
+                                { franchiseDivs }
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col">
+                            <div className="species-box">
+                                <p className="form-text">species</p>
+                                { speciesDivs }
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col">
+                            <div className="input-group mb-3">
+                                <span className="input-group-text">Image</span>
+                                <input
+                                    className="form-control"
+                                    type="file"
+                                    name="imgUrl"
+                                    value={props.handleChange}
+                                />
                             </div>
                         </div>
                     </div>
