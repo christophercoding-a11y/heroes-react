@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router'
+import { Route, Routes } from 'react-router'
 
 
 import Header from "./components/Header"
@@ -21,7 +21,7 @@ const App =()=> {
         franchise_id: 0,
         species_id: 0,
         place_of_origin: '',
-        first_app: '',
+        first_app: 1960,
         alignment: '',
         imgUrl: ''
     })

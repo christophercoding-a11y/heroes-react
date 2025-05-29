@@ -1,37 +1,40 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-import AllDataCard from "./AllDataCard";
+import AllDataCard from './AllDataCard'
 
-const AllData =(props)=> {
+const AllData =( {table, name} )=> {
 
-    const [ table, setTable] = useState(props.table)
-    const [ dataArr, setDataArr] = useState([])
-    const [ name, setName ] = useState(props.name)
+    const [ dataArr, setDataArr ] = useState([])
+
 
     useEffect(()=> {
 
         const url = `http://localhost:3005/api/${table}`
 
         axios.get(url).then(res => setDataArr(res.data))
-    }, [])
+    }, [table])
 
-    const AllDataCardComponents = dataArr.map(item => {
+    const allDataCardComponents = dataArr.map(item => {
+        
         return (
-            <AllDataCard
-                key={dataArr.indexOf(item)}
-                table={table}
-                data={item}
-            />
+            <AllDataCard 
+                key={item.franchise_id || item.power_id || item.species_id || item.team_id} 
+                table={table} 
+                data={item} 
+                name={item.franchise || item.power || item.species || item.team}
+            />  
         )
     })
 
-    return(
-        <main className="main" id="AllDataMain">
+    console.log(allDataCardComponents)
+
+    return (
+        <main className="main" id="franchiseMain">
             <div className="container">
-                <h2 className="allData-heading">All {table}</h2>
+                <h2 className="franchise-heading">All {name }</h2>
                 <div className="row row-cols-1 row-cols-md-3">
-                    { AllDataCardComponents }
+                    { allDataCardComponents }
                 </div>
             </div>
         </main>
