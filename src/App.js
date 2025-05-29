@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
+import axios from 'axios'
 
 
 import Header from "./components/Header"
@@ -23,21 +24,27 @@ const App =()=> {
         place_of_origin: '',
         first_app: 1960,
         alignment: '',
-        imgUrl: ''
+        img_url: ''
     })
 
-    const handleClick =(e)=> {
+    const handleSubmit =(e)=> {
         e.preventDefault()
-        console.log('clicked')
+        // console.log(formData)
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:3005/api/hero/post',
+            data: formData
+        }).then(response => console.log(response))
     }
 
     const handleChange =(event)=> {
-        const { name, value, type, selected } = event.target
+        const { name, value } = event.target
 
         setFormData(prevState => {
             return {
                 ...prevState,
-                [name]: type === "radio" ? selected : value
+                [name]: value
             }
         })
     }
@@ -56,7 +63,7 @@ const App =()=> {
                 <Route 
                     path="/heroForm" 
                     element={ <HeroForm 
-                        handleClick={ handleClick } 
+                        handleSubmit={ handleSubmit } 
                         handleChange={handleChange} 
                         formData={formData}  
                     />} 

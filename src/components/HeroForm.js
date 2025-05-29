@@ -20,8 +20,8 @@ const HeroForm =(props)=> {
                 <input
                     className="form-check-input"
                     type="radio"
-                    name="species"
-                    value={franchise.franchise_id}
+                    name="franchise_id"
+                    defaultValue={franchise.franchise_id}
                     id={franchise.franchise}
                     onChange={props.handleChange}
                 />
@@ -39,8 +39,8 @@ const HeroForm =(props)=> {
                 <input
                     className="form-check-input"
                     type="radio"
-                    name="species"
-                    value={species.species_id}
+                    name="species_id"
+                    defaultValue={species.species_id}
                     id={species.species}
                     onChange={props.handleChange}
                 />
@@ -54,7 +54,7 @@ const HeroForm =(props)=> {
     return(
         <main className="main" id="heroFormMain">
             <div className="container">
-                <form className="hero-form form" onSubmit={ props.handleClick }>
+                <form className="hero-form form" onSubmit={ props.handleSubmit }>
                     <div className="row mb-3">
                         <div className="col">
                             <label htmlFor="heroName" className="form-label">Hero Name</label>
@@ -135,7 +135,7 @@ const HeroForm =(props)=> {
                                     className="form-check-input"
                                     type="radio"
                                     name="alignment"
-                                    value="HERO"
+                                    defaultValue="HERO"
                                     id="heroAligment"
                                     onChange={props.handleChange}
                                 />
@@ -145,7 +145,7 @@ const HeroForm =(props)=> {
                                     <input
                                     className="form-check-input"
                                     type="radio"
-                                    value="VILLAIN"
+                                    defaultValue="VILLAIN"
                                     name="alignment"
                                     id="villainAligment"
                                     onChange={props.handleChange}
@@ -156,7 +156,7 @@ const HeroForm =(props)=> {
                                     <input
                                     className="form-check-input"
                                     type="radio"
-                                    value="ANTIHERO"
+                                    defaultValue="ANTIHERO"
                                     name="alignment"
                                     id="antiheroAligment"
                                     onChange={props.handleChange}
@@ -189,8 +189,9 @@ const HeroForm =(props)=> {
                                 <input
                                     className="form-control"
                                     type="file"
-                                    name="imgUrl"
-                                    value={props.handleChange}
+                                    name="img_url"
+                                    onChange={props.handleChange}
+                                    value={props.img_url}
                                 />
                             </div>
                         </div>
