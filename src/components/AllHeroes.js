@@ -13,6 +13,10 @@ const AllHeroes =(props)=> {
     const params = useParams()
 
     useEffect(()=> {
+        props.resetData()
+    }, [])
+
+    useEffect(()=> {
         setHeading(props.table)
     }, [])
 

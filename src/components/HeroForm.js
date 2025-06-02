@@ -52,6 +52,8 @@ const HeroForm =(props)=> {
     })
 
     return(
+        <>
+        { props.isPostSuccess.isSuccess ? <Success /> :
         <main className="main" id="heroFormMain">
             <div className="container">
                 <form className="hero-form form" onSubmit={ props.handleSubmit }>
@@ -204,8 +206,18 @@ const HeroForm =(props)=> {
                 </form>
             </div>
         </main>
+        }
+        </>
     )
 
+}
+
+const Success =()=> {
+    return (
+        <div className="container">
+            <h2>Hero was successfully added.</h2>
+        </div>
+    )
 }
 
 export default HeroForm
